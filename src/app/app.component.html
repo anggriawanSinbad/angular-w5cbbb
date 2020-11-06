@@ -1,0 +1,22 @@
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+	<ng-container matColumnDef="name">
+		<mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+		<mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+	</ng-container>
+
+  <ng-container matColumnDef="activate">
+		<mat-header-cell *matHeaderCellDef> active </mat-header-cell>
+		<mat-cell *matCellDef="let element"> {{element.activate}} </mat-cell>
+	</ng-container>
+
+	<ng-container matColumnDef="toggle">
+		<mat-header-cell *matHeaderCellDef> toggle </mat-header-cell>
+		<mat-cell *matCellDef="let element" >
+			<mat-slide-toggle [checked]="element.activate" (change)="updateActiveStatus(element)"></mat-slide-toggle>
+		</mat-cell>
+	</ng-container>
+
+	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+	<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
